@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create A New User</title>
+  </head>
+  <body>
+    <h1>Create A New User</h1>
+    <form action="/api/users?api-key=perscholas" method="POST">
+      <label for="name">
+        Name: <input type="text" id="name" name="name" />
+      </label>
+      <br />
+      <label for="username">
+        Username: <input type="text" id="username" name="username" />
+      </label>
+      <br />
+      <label for="email">
+        Email: <input type="email" id="email" name="email" />
+      </label>
+      <br />
+      <input type="submit" value="Create User" />
+    </form>
+  </body>
+</html>
