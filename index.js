@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3000;
 const usersRouter = require('./routes/users.js');
 const postsRouter = require('./routes/posts.js');
+const commentsRouter = require('./routes/comments.js');
 const error = require('./utilities/error.js');
 const path = require('path');
 
@@ -60,6 +61,8 @@ app.use('/api', function (req, res, next) {
 app.use('/api/users', usersRouter);
 // Post Routes
 app.use('/api/posts', postsRouter);
+// Comment Routes
+app.use('/api/comments', commentsRouter);
 
 app.get('/users/new', (req, res) => {
   res.sendFile('/views/newUser.html', {
@@ -106,6 +109,10 @@ app.get('/api', (req, res) => {
     ],
   });
 });
+
+
+
+
 
 // Custom 404 (not found) middleware.
 // Since we place this last, it will only process

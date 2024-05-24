@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 //Importing the data from our fake database file
 const users = require('../data/users.js');
+const posts = require('../data/posts.js');
 
 //////////////////
 // BASE PATH
@@ -45,6 +46,26 @@ router.get('/:id', (req, res, next) => {
   if (user) res.json({ user, links });
   else next();
 });
+
+router.get('/:id/posts', (req, res) => {
+  const newArr = []
+  
+
+  posts.forEach(element => {
+    if(element.userId == req.params.id) {
+      newArr.push(element)
+    }
+
+  });
+  if (newArr.length > 0) {
+    res.json(newArr);
+  } else {
+    res.send("Couldn't find that users post")
+  }
+  
+})
+
+
 
 //Creating a User (POST)
 // POST /api/users

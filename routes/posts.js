@@ -19,6 +19,24 @@ router.get('/', (req, res) => {
     },
   ];
 
+  if (req.query.userId) {
+
+    const newArr = []
+
+    posts.forEach(element => {
+      if (element.userId == req.query.userId) {
+        newArr.push(element)
+      }
+
+    });
+
+    if (newArr.length > 0) {
+      res.json(newArr);
+    } else {
+      res.send("Couldn't find that users post")
+    }
+  }
+
   res.json({ posts, links });
 });
 
